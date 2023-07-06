@@ -1,0 +1,76 @@
+    1- use my_first_db
+
+    2- db.students.insertMany([
+  {
+    name: "John",
+    home_state: "California",
+    lucky_number: 7,
+    birthday: { month: 5, day: 12, year: 1998 }
+  },
+  {
+    name: "Alice",
+    home_state: "Washington",
+    lucky_number: 9,
+    birthday: { month: 9, day: 21, year: 2000 }
+  },
+  { 
+  name: "Ali",
+  home_state: "Berlin",
+  lucky_number: 1,
+  birthday: { month: 2, day: 22, year: 2008 }
+},
+{ 
+name: "Amy",
+home_state: "Florida",
+lucky_number: 3,
+birthday: { month: 4, day: 11, year: 1999 }
+},
+{  name: "Walker",
+home_state: "Oklahoma",
+lucky_number: 6 ,
+birthday: { month: 10, day: 23, year: 2010 }
+},
+]);
+
+    3- db.students.find();
+
+    4-db.students.find({ $or: [{ home_state: "California" }, { home_state: "Washington" }] });
+
+    5-db.students.find({ lucky_number: { $gt: 3 } });
+
+    6-db.students.find({ lucky_number: { $lte: 10 } });
+
+    7-db.students.find({ lucky_number: { $gte: 1, $lte: 9 } });
+
+    8-db.students.updateMany({}, { $set: { interests: ["coding", "brunch", "MongoDB"] } });
+
+    9-db.students.updateOne({ name: "John" }, { $addToSet: { interests: "hiking" } }); //you can use $push: in place of this  $addToSet
+    db.students.updateOne({ name: "Alice" }, { $addToSet: { interests: "reading" } });
+    // Add more interests to other students as needed
+    
+    10-db.students.updateOne({ name: "John" }, { $addToSet: { interests: "taxes" } });
+
+    11-db.students.updateOne({ name: "John" }, { $pull: { interests: "taxes" } });
+
+    12-db.students.deleteMany({ home_state: "California" });
+
+    13-db.students.deleteOne({ name: "Alice" });
+
+    14-db.students.deleteOne({ lucky_number: { $gt: 5 } });
+
+    15-db.students.updateMany({}, { $set: { number_of_belts: 0 } });
+
+    16-db.students.updateMany({ home_state: "Washington" }, { $inc: { numberI apologize for the incomplete response. Here is the continuation of the steps:
+
+        18. Increment the 'number_of_belts' field by 1 for all students in Washington:
+        ```javascript
+        db.students.updateMany({ home_state: "Washington" }, { $inc: { number_of_belts: 1 } });
+        
+
+    17-db.students.updateMany({}, { $rename: { "number_of_belts": "belts_earned" } });
+
+    18-db.students.updateMany({}, { $unset: { lucky_number: "" } });
+
+    19-db.students.updateMany({}, { $currentDate: { updated_on: true } });
+
+    
